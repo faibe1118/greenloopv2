@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Greenloop • Dashboard de Publicaciones Sostenibles</title>
+  <title>Greenloop • Dashboard de Residuos</title>
 
   <!-- META SEO -->
   <meta name="description" content="Explora materiales reciclables publicados por vendedores en Greenloop. Encuentra recursos útiles, negocia y contribuye a la economía circular.">
