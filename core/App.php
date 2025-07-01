@@ -104,7 +104,10 @@ class App {
             $this->controladorActual = 'AceptarPublicacionesController';
         } elseif ($url[0] == 'legal') {
             $this->controladorActual = 'LegalController';
+        } elseif ($url[0] == 'sobrenosotros') {
+            $this->controladorActual = 'SobrenosotrosController';
         }
+
 
         // Cargar controlador
         require_once '../app/controllers/' . $this->controladorActual . '.php';

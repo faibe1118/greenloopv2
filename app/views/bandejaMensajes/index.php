@@ -22,7 +22,7 @@
 ?>">
   <img src="<?= URL_ROOT ?>/img/logo.png" alt="Logo Greenloop" />
 </a>
-            </div>
+          </div>
 
             <div class="bandeja-mensajes-container">
                 <h2>Bandeja de Mensajes</h2>
@@ -39,12 +39,15 @@
                         <p>Accede a los mensajes relacionados con las negociaciones de productos.</p>
                     </a>
 
-                    <a href="/greenloopv2/public/acuerdos/mensajes" class="card btn-card">
-                        <h3>📬 Coordinación de Acuerdos</h3>
-                        <p>Accede a la bandeja de coordinación de acuerdos.</p>
-                    </a>
-            </section>
+                    <?php if (false): ?>
+                        <a href="/greenloopv2/public/acuerdos/mensajes" class="card btn-card">
+                            <h3>📬 Coordinación de Acuerdos</h3>
+                            <p>Accede a la bandeja de coordinación de acuerdos.</p>
+                        </a>
+                    <?php endif; ?>
+
+                </section>
             </div>
-        </div>
+          </div>
     </body>
 </html>

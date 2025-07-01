@@ -107,6 +107,9 @@ form button {
   transition: all 0.3s ease;
 }
 
+
+
+
 .nav-buttons button:hover,
 form button:hover {
   background: var(--green-400);
@@ -1668,3 +1671,66 @@ form select option {
   background: var(--green-400);
   color: var(--blue-900);
 }
+
+.btn-sobre-nosotros {
+  background-color: transparent;
+  border: 2px solid var(--green-400);
+  color: var(--green-400);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-sobre-nosotros:hover {
+  background-color: var(--green-400);
+  color: white;
+}
+
+.badge-material {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.badge-plastico {
+  background-color: #22c55e; /* verde */
+  color: #1e3a1e;
+}
+
+.badge-metales {
+  background-color: #6B7280; /* gris oscuro */
+  color: #f9fafb;
+}
+
+.badge-papel {
+  background-color: #FBBF24; /* amarillo */
+  color: #78350f;
+}
+
+.badge-otros {
+  background-color: #8B5CF6; /* púrpura */
+  color: #f3e8ff;
+}
+
+.badge-nuevo {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: #facc15; /* amarillo vibrante */
+  color: #1f2937; /* gris oscuro */
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.15);
+  z-index: 10;
+}
+

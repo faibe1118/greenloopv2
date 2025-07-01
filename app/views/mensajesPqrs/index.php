@@ -64,29 +64,48 @@
   <title>Mensajes PQRS • Greenloop</title>
 </head>
 <body>
+  <div class="bandeja-mensajes-wrapper">
+    <!-- LOGO SUPERIOR SIMPLE -->
+    <div class="logo-login">
+      <a href="<?php
+        if (isset($_SESSION['usuario_tipo']) && $_SESSION['usuario_tipo'] === 'admin') {
+          echo URL_ROOT . '/dashboardAdmin/index';
+        } elseif (isset($_SESSION['usuario_id'])) {
+          echo URL_ROOT . '/userDashboard/index';
+        } elseif (isset($_SESSION['personal_id'])) {
+          echo URL_ROOT . '/dashboardAdmin/index';
+        } else {
+          echo URL_ROOT . '/login/index';
+        }
+      ?>">
+        <img src="<?= URL_ROOT ?>/img/logo.png" alt="Logo Greenloop" />
+      </a>
+    </div>
 
-  <div class="bandeja-pqrs">
-    <h2 style="text-align:center; margin-bottom: 1.5rem;">Mis Solicitudes PQRS</h2>
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="bandeja-pqrs">
+      <h2 style="text-align:center; margin-bottom: 1.5rem;">Mis Solicitudes PQRS</h2>
 
-    <?php if (!empty($data['pqrs'])): ?>
-      <?php foreach ($data['pqrs'] as $pqrs): ?>
-        <div class="pqrs-item">
-          <div><strong>Asunto:</strong> <?= htmlspecialchars($pqrs['asunto']) ?></div>
-          <div><strong>Tipo:</strong> <?= htmlspecialchars($pqrs['tipo']) ?></div>
-          <div><strong>Estado:</strong> <?= htmlspecialchars($pqrs['estado']) ?></div>
-          <div><strong>Fecha:</strong> <?= htmlspecialchars($pqrs['fecha_creacion']) ?></div>
+      <?php if (!empty($data['pqrs'])): ?>
+        <?php foreach ($data['pqrs'] as $pqrs): ?>
+          <div class="pqrs-item">
+            <div><strong>Asunto:</strong> <?= htmlspecialchars($pqrs['asunto']) ?></div>
+            <div><strong>Tipo:</strong> <?= htmlspecialchars($pqrs['tipo']) ?></div>
+            <div><strong>Estado:</strong> <?= htmlspecialchars($pqrs['estado']) ?></div>
+            <div><strong>Fecha:</strong> <?= htmlspecialchars($pqrs['fecha_creacion']) ?></div>
 
-          <div class="acciones">
-            <a href="<?= URL_ROOT ?>/mensajesPqrs/ver/<?= $pqrs['id'] ?>">Ver conversación</a>
-            <a href="<?= URL_ROOT ?>/mensajesPqrs/cerrar/<?= $pqrs['id'] ?>">Cerrar PQRS</a>
+            <div class="acciones">
+              <a href="<?= URL_ROOT ?>/mensajesPqrs/ver/<?= $pqrs['id'] ?>">Ver conversación</a>
+              <a href="<?= URL_ROOT ?>/mensajesPqrs/cerrar/<?= $pqrs['id'] ?>">Cerrar PQRS</a>
+            </div>
           </div>
-        </div>
-      <?php endforeach; ?>
-    <?php else: ?>
-      <p>No tienes solicitudes PQRS.</p>
-    <?php endif; ?>
+        <?php endforeach; ?>
+      <?php else: ?>
+        <p>No tienes solicitudes PQRS.</p>
+      <?php endif; ?>
+    </div>
   </div>
-
 </body>
+
 </html>
 

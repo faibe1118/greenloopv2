@@ -39,10 +39,11 @@
       </div>
 
       <div class="nav-buttons">
-        <button>Busqueda avanzada</button>
-        <button onclick="window.location.href='/greenloopv2/public/registro/index/';" class="btn-crear-cuenta">Crear cuenta</button>
-        <button onclick="window.location.href='/greenloopv2/public/login/index/';" class="btn-crear-cuenta">Ingresar</button>
+        <button onclick="window.location.href='/greenloopv2/public/sobrenosotros/index';" class="btn-crear-cuenta">Sobre Nosotros</button>
+        <button onclick="window.location.href='/greenloopv2/public/registro/index';" class="btn-crear-cuenta">Crear cuenta</button>
+        <button onclick="window.location.href='/greenloopv2/public/login/index';" class="btn-crear-cuenta">Ingresar</button>
       </div>
+
     </div>
   </header>
 
@@ -52,10 +53,35 @@
       <!-- Las tarjetas se generarán dinámicamente aquí con PHP -->
       <?php if (!empty($data['publicaciones'])): ?>
         <?php foreach ($data['publicaciones'] as $publicacion): ?>
-          <article class="card publi">
+
+          <?php
+            $fecha = strtotime($publicacion['fecha_publicacion']);
+            $esNuevo = (time() - $fecha) < 7 * 24 * 60 * 60;
+          ?>
+
+          <article class="card publi"
+  data-keywords="<?= strtolower($publicacion['titulo'] . ' ' . $publicacion['descripcion'] . ' ' . $publicacion['tipo_material'] . ' ' . $publicacion['ubicacion']) ?>">
+  
+  <?php if ($esNuevo): ?>
+    <span class="badge-nuevo">🔥 Nuevo</span>
+  <?php endif; ?>
+
   <img src="/greenloopv2/public/uploads/<?php echo $publicacion['imagen']; ?>" alt="Imagen de <?php echo $publicacion['titulo']; ?>" class="card-image">
 
   <div class="card-content">
+    <?php
+      $tipo = strtolower(trim($publicacion['tipo_material']));
+      $claseTipo = match($tipo) {
+        'plásticos', 'plasticos' => 'badge-plastico',
+        'metales' => 'badge-metales',
+        'cartones y papeles' => 'badge-papel',
+        default => 'badge-otros'
+      };
+    ?>
+    <span class="badge-material <?= $claseTipo ?>">
+      <?= ucfirst($tipo) ?>
+    </span>
+
     <h3 class="card-title"><?php echo htmlspecialchars($publicacion['titulo']); ?></h3>
 
     <p class="card-description">
@@ -70,6 +96,7 @@
     </p>
   </div>
 </article>
+
 
         <?php endforeach; ?>
       <?php else: ?>
