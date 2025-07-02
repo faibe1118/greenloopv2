@@ -62,8 +62,23 @@ class NegociacionesService {
         return $this->negociacionesRepository->actualizarPropuestaPrecio($idNegociacion, $precio);
     }
 
-    public function cerrarTrato($idNegociacion, $estado, $precio = null) {
+    public function cerrarTrato($idNegociacion, $estado, $precio) {
         return $this->negociacionesRepository->cerrarTrato($idNegociacion, $estado, $precio);
+        if ($estado === 'aceptada' && $precio !== null) {
+            // Obtener negociación completa
+            $negociacion = $this->obtenerNegociacionPorId($idNegociacion);
+
+            // Registrar el pago pendiente
+            $this->registrarPago([
+                'id_negociacion' => $idNegociacion,
+                'id_comprador' => $negociacion['id_comprador'],
+                'monto' => $precio
+            ]);
+        }
+    }
+
+    public function registrarPago($data) {
+        return $this->negociacionesRepository->registrarPago($data);
     }
 
 

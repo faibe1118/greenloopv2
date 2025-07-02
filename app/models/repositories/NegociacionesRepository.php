@@ -115,4 +115,14 @@ class NegociacionesRepository implements NegociacionesRepositoryInterface {
         $this->db->query($sql, [$estado, $precio, $idNegociacion]);
     }
 
+    public function registrarPago($data) {
+        $sql = "INSERT INTO pagos (id_negociacion, id_comprador, monto, estado) VALUES (?, ?, ?, 'pendiente')";
+        $this->db->query($sql, [
+            $data['id_negociacion'],
+            $data['id_comprador'],
+            $data['monto']
+        ]);
+    }
+
+
 }
