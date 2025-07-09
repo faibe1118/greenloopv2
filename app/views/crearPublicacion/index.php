@@ -41,9 +41,11 @@
         <!-- Tipo de material -->
         <select name="tipo_material" required>
           <option value="">Selecciona tipo de material</option>
-          <option value="cartones">Cartones y papeles</option>
+          <option value="papel">Cartones y papeles</option>
           <option value="metales">Metales</option>
-          <option value="plasticos">Plásticos</option>
+          <option value="plastico">Plásticos</option>
+          <option value="textil">Textil</option>
+          <option value="plastico">Plásticos</option>
         </select>
 
         <!-- Cantidad -->
